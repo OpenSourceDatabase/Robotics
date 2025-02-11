@@ -3,17 +3,22 @@
 ## Setup
 
 ### Prerequisites
+Tested on Ubuntu 22.04 and Python 3.10.
+
+### Install
 ```
 python -m venv django-env
 source django-env/bin/activate
 python -m pip install Django django-publications
 ```
+
 ### Download and execute
 ```
 git clone https://github.com/OpenSourceDatabase/Robotics.git
 cd Robotics/publication-server
 python manage.py runserver
 ```
+
 ### Browse
 * [Complete list of publications](http://localhost:8000/publications/)
 * [Publications in 2024](http://localhost:8000/publications/year/2024/)
