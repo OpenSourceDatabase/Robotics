@@ -1,5 +1,21 @@
 # Robotics
 
+## Setup
+
+### Prerequisites
+```
+python -m pip install Django django-publications
+```
+### Download and execute
+```
+git clone https://github.com/OpenSourceDatabase/Robotics.git
+cd Robotics/publication-server
+python manage.py runserver
+```
+### Browse
+* [Complete list of publications](http://localhost:8000/publications/)
+* [Publications in 2024](http://localhost:8000/publications/year/2024/)
+
 ## Raw data
 
 Raw data has been obtained from [IEEE Xplore](https://ieeexplore.ieee.org/Xplore/home.jsp) using [advanced search](https://ieeexplore.ieee.org/search/advanced) with the "github" keyword in all metadata and either the conference name in the publication title or the journal ISSN, for the following conferences and journals:
