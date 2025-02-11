@@ -32,3 +32,10 @@ Raw data has been obtained from [IEEE Xplore](https://ieeexplore.ieee.org/Xplore
 The Github code repository is obtained from the abstract. 
 
 If the URL contains "github.io" the linked page is retrieved and searched for a Github code repository.
+
+### Execute
+```
+python process_CSV_files.py
+cd publication-server
+sqlite3 db.sqlite3 < import_csv_files.sql
+```
