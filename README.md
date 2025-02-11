@@ -4,6 +4,8 @@
 
 ### Prerequisites
 ```
+python -m venv django-env
+source django-env/bin/activate
 python -m pip install Django django-publications
 ```
 ### Download and execute
