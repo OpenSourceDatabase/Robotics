@@ -46,10 +46,14 @@ def extract_github_url_from_githubio(githubio_url):
         return
         
 def process_csv(file_path):
+    global idx
+
     df = pd.read_csv(file_path)
     df = df.reset_index()
 
     for index, row in df.iterrows():
+      df.at[index, 'id'] = int(idx)
+      idx += 1
       github_url = extract_github_url(df.at[index,'Abstract'])
       if github_url:
         if "github.io" in github_url:
@@ -62,7 +66,39 @@ def process_csv(file_path):
         df.at[index, 'github_code'] = github_code
       else:
         print("No GitHub URL found in the text.")
-    return df
+
+    df2 = df[['Document Title','Authors','Publication Year','Publication Title', 'Publisher',
+              'Author Affiliations', 'IEEE Terms', 'github_code', 'PDF Link', 'DOI', 'Abstract',
+              'ISBNs']]
+              
+    if 'Conferences' in file_path:
+      df2.columns = ['title', 'authors', 'year', 'book_title', 'publisher', 'institution',
+                    'keywords', 'code', 'pdf', 'doi', 'abstract', 'isbn']
+      df2['journal'] = ''
+      df2['type_id'] = 2
+    else:
+      df2.columns = ['title', 'authors', 'year', 'journal', 'publisher', 'institution',
+                    'keywords', 'code', 'pdf', 'doi', 'abstract', 'isbn']
+      df2['book_title'] = ''
+      df2['type_id'] = 1
+      
+    df2['id'] = df['id']
+    df2['citekey'] = ''
+    df2['month'] = ''
+    df2['volume'] = 0
+    df2['number'] = 0
+    df2['pages'] = ''
+    df2['note'] = ''
+    df2['url'] = ''
+    df2['image'] = ''
+    df2['thumbnail'] = ''
+    df2['external'] = False
+    
+    df2 = df2[['id', 'citekey', 'title', 'authors', 'year', 'month', 'journal', 'book_title',
+               'publisher', 'institution', 'volume', 'number', 'pages', 'note', 'keywords',
+               'url', 'code', 'pdf', 'image', 'thumbnail', 'doi', 'external', 'abstract',
+               'isbn', 'type_id']]
+    return df2
     
 def process_folder(folder_path):
   for root, dirs, files in os.walk(folder_path):
@@ -76,6 +112,8 @@ def process_folder(folder_path):
         print(f"Saved processed file to {output_file_path}")
 
 def main():
+    global idx
+    idx = 1
     root_folder = '.'
     process_folder(root_folder)
 
