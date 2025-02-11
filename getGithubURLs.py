@@ -111,10 +111,25 @@ def process_folder(folder_path):
         processed_df.to_csv(output_file_path, index=False)
         print(f"Saved processed file to {output_file_path}")
 
+def delete_processed_files(folder_path):
+    """
+    Delete all files in the folder and its subfolders whose names start with "processed".
+    """
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.startswith("processed"):
+                file_path = os.path.join(root, file)
+                try:
+                    os.remove(file_path)
+                    print(f"Deleted: {file_path}")
+                except Exception as e:
+                    print(f"Error deleting {file_path}: {e}")
+
 def main():
     global idx
     idx = 1
     root_folder = '.'
+    delete_processed_files(root_folder)
     process_folder(root_folder)
 
 if __name__ == "__main__":
