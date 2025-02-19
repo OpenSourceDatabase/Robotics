@@ -19,7 +19,13 @@ cd Robotics/publication-server
 python manage.py runserver
 ```
 
-### Browse
+## Docker
+Tested on Docker version 27.5.0, build a187fa5.
+```
+docker run --rm -it -p 8000:8000 ghcr.io/opensourcedatabase/robotics:main
+```
+
+## Browse
 * [Complete list of publications](http://localhost:8000/publications/)
 * Publications by year:
   * [2024](http://localhost:8000/publications/year/2024/), [2023](http://localhost:8000/publications/year/2023/), [2022](http://localhost:8000/publications/year/2022/), [2021](http://localhost:8000/publications/year/2021/),  [2020](http://localhost:8000/publications/year/2020/), [2019](http://localhost:8000/publications/year/2019/), [2018](http://localhost:8000/publications/year/2018/), [2017](http://localhost:8000/publications/year/2017/), [2016](http://localhost:8000/publications/year/2016/), [2013](http://localhost:8000/publications/year/2013/)
