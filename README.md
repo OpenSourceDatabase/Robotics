@@ -1,6 +1,18 @@
 # Robotics
 
-## Setup
+Database of open source code repositories of robotics research papers.
+
+## Quick Setup
+
+1. Clone and execute:
+```
+git clone https://github.com/OpenSourceDatabase/Robotics.git
+./Robotics/RUNME.sh
+```
+
+2. Browse the [list of publications](http://localhost:8000/publications/).
+
+## Detailed Instructions
 
 ### Prerequisites
 Tested on Ubuntu 22.04 and Python 3.10.
