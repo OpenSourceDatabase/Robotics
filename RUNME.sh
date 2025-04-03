@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker run --rm -it -p 8000:8000 ghcr.io/opensourcedatabase/robotics:main
+
